@@ -1,0 +1,39 @@
+TEMPLATE = app
+CONFIG += console
+CONFIG -= app_bundle
+CONFIG -= qt
+
+TARGET = ImgReciever
+DESTDIR += ../../../bin/
+
+CONFIG(debug, debug|release) {
+    OBJECTS_DIR = ./tmp_Debug
+}
+CONFIG(release, debug|release) {
+    OBJECTS_DIR = ./tmp_Release
+}
+
+SOURCES += \
+    ImgReciever.cc \
+    ImgLoopmain.cpp
+
+HEADERS += \
+    ImgReciever.hh \
+    Img.hh
+
+INCLUDEPATH += \
+    ../../message \
+    /usr/local/opencv/include \
+    /usr/local/opencv/include/opencv \
+    /usr/local/opencv/include/opencv2
+
+
+LIBS += \
+    -L/usr/local/lib \
+    -lrcs \
+    ../../../lib/libUGVAuto.a \
+   -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_ml  \
+   -lpthread
+
+
+
